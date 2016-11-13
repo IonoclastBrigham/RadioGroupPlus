@@ -351,8 +351,12 @@ public class RadioGroupPlus extends LinearLayout {
                     id = View.generateViewId();
                     view.setId(id);
                 }
-                ((RadioButton) view).setOnCheckedChangeListener(
-                        mChildOnCheckedChangeListener);
+
+                RadioButton radio = (RadioButton)view;
+                if (radio.isChecked()) {
+                    setCheckedId(id);
+                }
+                radio.setOnCheckedChangeListener(mChildOnCheckedChangeListener);
             }
             if (!(view instanceof ViewGroup)) {
                 return;
